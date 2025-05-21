@@ -165,11 +165,5 @@ VALUES ('4469327206605852773', '2027-04-26 04:21:45', 'BLOCKED', 9291.32, 13);
 INSERT INTO card (card_number, expire_date, card_status, balance, user_id)
 VALUES ('3590278840124061', '2028-11-26 04:21:45', 'ACTIVE', 6667.59, 28);
 
--- insert into users(username,password,firstname,lastname,passport_no,birth_date,role)
--- values ('mike@gmail.com',crypt('mike',gen_salt('bf',10)),'Mike','Poll','AC1111','1985-01-01','USER'),
---        ('paul@gmail.com',crypt('paul',gen_salt('bf',10)),'Paul','Smith','AC2222','1986-02-02','ADMIN');
---
--- insert into card(card_number,expire_date,card_status,balance,user_id)
--- values ('1111111111111111','2029-01-30 00:00:00','ACTIVE',3000.40,1),
---        ('2222222222222222','2028-03-30 00:00:00','ACTIVE',2000.50,2)
+
 
