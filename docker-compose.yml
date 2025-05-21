@@ -1,0 +1,30 @@
+services:
+  postgres-db:
+    container_name: card_postgres
+    image: postgres
+    environment:
+      POSTGRES_USER: beck
+      POSTGRES_PASSWORD: beck
+    ports:
+      - "15432:5432"
+    volumes:
+      - ./infrastructure/db/create_db.sql:/docker-entrypoint-initdb.d/create_db.sql
+      - db-data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+  padmin:
+    container_name: pgadmin_container
+    image: dpage/pgadmin4
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: root
+    ports:
+      - "5050:80"
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+
+
+volumes:
+  db-data:
+  pgadmin-data:

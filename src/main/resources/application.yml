@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: demo1
+
+  datasource:
+    url: jdbc:postgresql://localhost:15432/bank_cards
+    username: beck
+    password: beck
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+  liquibase:
+    enabled: true
+    drop-first: false
+    change-log: classpath:db/changelog/db.changelog-master.yml
+    default-schema: public
+
+  profiles:
+    active: dev
+
+server:
+  port: 8090
+
+jwt:
+  secret: 123456789101112131415123456789101112131415123456789101112131415
+
+
+
