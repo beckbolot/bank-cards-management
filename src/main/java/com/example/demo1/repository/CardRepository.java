@@ -23,7 +23,7 @@ public interface CardRepository extends JpaRepository<Card,Integer>, QuerydslPre
 
     List<Card> findAllBy(String sortCriteria,Pageable pageable);
 
-    Slice<Card> findAllBy(Predicate predicate,Pageable pageable);
+    Slice<Card> findAllBy(Pageable pageable);
 
 
 

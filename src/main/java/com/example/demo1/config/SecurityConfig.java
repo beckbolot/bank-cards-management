@@ -35,8 +35,6 @@ public class SecurityConfig{
                         .sessionManagement(session->session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
         http.authorizeHttpRequests(request->request
                 .requestMatchers("/v3/api-docs/**","/swagger-ui/**").permitAll()
-//                .requestMatchers("/api/v1/cards/\\d","/api/v1/cards/transfer",
-//                        "/api/v1/cards/request/block").hasAuthority(Role.USER.getAuthority())
                 .requestMatchers("/api/v1/users/auth").permitAll()
                 .anyRequest().authenticated());
         http.httpBasic(Customizer.withDefaults());

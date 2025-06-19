@@ -19,9 +19,13 @@ import java.util.function.Function;
 @Component
 public class JwtUtil {
 
-    @Value("${jwt.secret}")
-    private String jwtSecret;
+
+    private final String jwtSecret;
     private long jwtExpiration = 1000*60*60;
+
+    public JwtUtil(@Value("${jwt.secret}")String jwtSecret) {
+        this.jwtSecret = jwtSecret;
+    }
 
     private Key getSigningKey(){
         byte[] keyBytes = Decoders.BASE64.decode(jwtSecret);

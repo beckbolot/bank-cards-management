@@ -5,11 +5,17 @@ info:
 servers:
 - url: http://localhost:8090
   description: Generated server url
+tags:
+- name: User Controller
+  description: API for managing users
+- name: Card controller
+  description: Operation related to Cards
 paths:
   /api/v1/users/{id}:
     get:
       tags:
-      - user-rest-controller
+      - User Controller
+      summary: "Getting user by id,only ADMIN can view user details"
       operationId: findById
       parameters:
       - name: id
@@ -27,7 +33,8 @@ paths:
                 $ref: "#/components/schemas/UserReadDto"
     put:
       tags:
-      - user-rest-controller
+      - User Controller
+      summary: Updating user information
       operationId: updateUser
       parameters:
       - name: id
@@ -51,7 +58,8 @@ paths:
                 $ref: "#/components/schemas/UserReadDto"
     delete:
       tags:
-      - user-rest-controller
+      - User Controller
+      summary: Deleting user by id
       operationId: delete
       parameters:
       - name: id
@@ -70,7 +78,8 @@ paths:
   /api/v1/cards/{id}:
     get:
       tags:
-      - card-rest-controller
+      - Card controller
+      summary: Only card owner can see his own card information
       operationId: findById_1
       parameters:
       - name: id
@@ -88,7 +97,8 @@ paths:
                 $ref: "#/components/schemas/CardReadDto"
     put:
       tags:
-      - card-rest-controller
+      - Card controller
+      summary: Updating card information
       operationId: update
       parameters:
       - name: id
@@ -112,7 +122,8 @@ paths:
                 $ref: "#/components/schemas/CardReadDto"
     delete:
       tags:
-      - card-rest-controller
+      - Card controller
+      summary: Deleting card from database
       operationId: delete_1
       parameters:
       - name: id
@@ -131,7 +142,8 @@ paths:
   /api/v1/users:
     get:
       tags:
-      - user-rest-controller
+      - User Controller
+      summary: "Getting all users, only User with role ADMIN can see all users"
       operationId: findAllUsers
       responses:
         "200":
@@ -144,7 +156,8 @@ paths:
                   $ref: "#/components/schemas/UserReadDto"
     post:
       tags:
-      - user-rest-controller
+      - User Controller
+      summary: 'Creating user '
       operationId: createUser
       requestBody:
         content:
@@ -162,7 +175,8 @@ paths:
   /api/v1/users/auth:
     post:
       tags:
-      - user-rest-controller
+      - User Controller
+      summary: Authenticating new user and getting Jwt token to make request
       operationId: authenticateAndGetToken
       requestBody:
         content:
@@ -180,7 +194,9 @@ paths:
   /api/v1/cards:
     get:
       tags:
-      - card-rest-controller
+      - Card controller
+      summary: Getting all cards with help of special created object PageResponse
+        that contains meta data about page
       operationId: findAll
       parameters:
       - name: pageable
@@ -197,7 +213,8 @@ paths:
                 $ref: "#/components/schemas/PageResponseCardReadDto"
     post:
       tags:
-      - card-rest-controller
+      - Card controller
+      summary: "Creating new card, only ADMIN can do this"
       operationId: create
       requestBody:
         content:
@@ -215,7 +232,9 @@ paths:
   /api/v1/cards/transfer:
     post:
       tags:
-      - card-rest-controller
+      - Card controller
+      summary: User can transfer funds between his cards or transfer to another person
+        card
       operationId: transfer
       requestBody:
         content:
@@ -233,7 +252,9 @@ paths:
   /api/v1/cards/request/block:
     post:
       tags:
-      - card-rest-controller
+      - Card controller
+      summary: "As user has no authority blocking card, user can request ADMIN to\
+        \ block the card"
       operationId: requestCardBlocking
       parameters:
       - name: cardId
@@ -257,7 +278,8 @@ paths:
   /api/v1/cards/block/{id}:
     post:
       tags:
-      - card-rest-controller
+      - Card controller
+      summary: "Blocking or cancelling card , only ADMIN can block card"
       operationId: blockCard
       parameters:
       - name: id
@@ -276,7 +298,8 @@ paths:
   /api/v1/cards/active/{id}:
     post:
       tags:
-      - card-rest-controller
+      - Card controller
+      summary: "Activating card , only ADMIN can activate cards "
       operationId: activateCardCard
       parameters:
       - name: id
@@ -295,7 +318,8 @@ paths:
   /api/v1/cards/filter:
     get:
       tags:
-      - card-rest-controller
+      - Card controller
+      summary: "Getting all cards by filtering card number, card status etc. "
       operationId: findAllByFilter
       parameters:
       - name: cardNumber
@@ -341,7 +365,8 @@ paths:
   /api/v1/cards/allCards:
     get:
       tags:
-      - card-rest-controller
+      - Card controller
+      summary: Getting all cards as list
       operationId: findAll_1
       responses:
         "200":
