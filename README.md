@@ -55,3 +55,31 @@ Administrator:
 
   💡 Technologies
   Java 17+, Spring Boot, Spring Security, Spring Data JPA, PostgreSQL/MySQL, Liquibase, Docker, JWT, Swagger (OpenAPI)
+
+
+# **🧾 Launch instructions**
+
+1. Clone the Repository
+git clone <https://github.com/beckbolot/bank-cards-management.git>
+cd bank-cards-management
+
+2. Set Up the Database
+Make sure you have **PostgreSQL** or **MySQL** running and create a database:
+CREATE DATABASE bank_cards_db;
+Update application.yml or application.properties with your DB credentials:
+spring:
+datasource:
+url: jdbc:postgresql://localhost:5432/bank_cards_db
+username: your_username
+password: your_password
+
+3. Run Liquibase Migrations
+./mvnw liquibase:update
+
+4. Build and Run the Application
+./mvnw clean install
+./mvnw spring-boot:run
+
+5. Access Swagger API Docs
+Visit:  
+<http://localhost:8080/swagger-ui/index.html>
